@@ -25,7 +25,8 @@ To collect property records and links for NEW BRUNSWICK CITY:
 To do a different city, specify:
 `python run.py -city "HIGHLAND PARK BORO"`
 
-Output is saved as a csv in the output folder.
+Output is saved as a csv in the output folder. An example of the output is here:
+https://docs.google.com/spreadsheets/d/1EMfypnlR0lw6XuUyPOFglQ_wWNrCN238Y-yh9DhIqW4/edit?usp=sharing
 
 
 

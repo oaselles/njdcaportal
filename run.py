@@ -43,7 +43,7 @@ if __name__ == '__main__':
     CITY = params.city
 
     # create browser object
-    browser = webdriver.Chrome('C:/Users/oasel/Documents/Projects/scraping/chromedriver_win32/chromedriver.exe')
+    browser = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
     browser.get(URL)
 
     # select the city and click search
