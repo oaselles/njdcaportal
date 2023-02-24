@@ -1,27 +1,25 @@
 # scraping property data
 
-## setup
-
-Scrapes property data from NJDCA portal, using Selenium and BS4. 
+Scrapes property data from NJDCA portal, using Selenium and BS4. Currently only extracts property records and links, but will collect other fields for 
+each property.
 
 NJDCA portal:
 https://njdcaportal.dynamics365portals.us/ultra-bhi-home/ultra-bhi-propertysearch
 
-1. Download a supported web driver'
-2. setup environment using Conda.
+## setup
+
+1. Install Conda: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
+2. Download a supported web driver: https://selenium-python.readthedocs.io/installation.html#drivers
+2. Setup environment using Conda: `conda create --name myenv --file spec-file.txt`
 
 Helpful documentation for using the WebDriver API https://selenium-python.readthedocs.io/index.html
 
 Conda documentation for managing environments:
 https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 
-To create the conda environment use:
-
-`conda create --name myenv --file spec-file.txt`
-
 ## usage
 
-To collect property data for NEW BRUNSWICK CITY:
+To collect property records and links for NEW BRUNSWICK CITY:
 `python run.py`
 
 To do a different city, specify:
