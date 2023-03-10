@@ -1,3 +1,5 @@
+from scripts import *
+
 # b = browser.find_elements(By.TAG_NAME, 'b')
 #https://njdcaportal.dynamics365portals.us/ultra-bhi-home/ultra-bhi-propertysearch/ultra-bhi-propertyinterest?pid=02768466-6abe-44b8-ab5c-d3832c731a59
 # element.send_keys("mckenziekatekramer@gmail.com")
@@ -25,3 +27,27 @@
 # titles = container.find_elements(By.TAG_NAME, 'a')
 # for title in titles:
 #     print(title.text)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Collects Property Data from njdcaportal')
+    parser.add_argument('-city', type=str, nargs='?', default=CITY)
+
+    params = parser.parse_args()
+    print(params.city)
+
+    CITY = params.city
+    CITYDB = 'data/tables_{}.db'.format(CITY.replace(' ', '_'))
+    TABLES = pd.read_pickle(CITYDB)
+
+    df = pd.DataFrame(TABLES['PROPERTIES'])
+
+    for t in TABLES.keys():
+        df = pd.DataFrame(TABLES[t])
+        o = "data/{t}_{c}.csv".format(t=t, c=CITY.replace(' ', '_'))
+        df.to_csv(o,index_label='ID')
+
+    t0 = time.time()
+    print('completed in:')
+    print(datetime.timedelta(seconds=time.time()-t0))

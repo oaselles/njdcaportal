@@ -1,38 +1,7 @@
-import pandas as pd
-import os
-import time
-import random
-import argparse
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
-
-# input
-URL = 'https://njdcaportal.dynamics365portals.us/ultra-bhi-home/ultra-bhi-propertysearch'
-CITY = 'NEW BRUNSWICK CITY'
-FIELDS = [
-    'Registration',
-    'Property Name ',
-    'Building Street Address',
-    'Primary Owner Name ',
-    'Municipality',
-    'County',
-    'Block',
-    'Lot',
-    'ZipCode'
-]
+from scripts import *
 
 # output
 RECORDS = list()
-
-def WAIT(min_secs=3, max_secs=10):
-    """Waits for a random number of seconds."""
-    secs = random.randint(min_secs, max_secs)
-    print('waiting', secs, 'secs')
-    time.sleep(secs)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -102,4 +71,4 @@ if __name__ == '__main__':
         WAIT()
 
     DATASET = pd.DataFrame(RECORDS)
-    DATASET.to_csv('output/prop_records_{}.csv'.format(CITY.replace(' ','_')))
+    DATASET.to_csv('records/prop_records_{}.csv'.format(CITY.replace(' ','_')), index_label='UPID')
